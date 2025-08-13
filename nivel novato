@@ -1,28 +1,27 @@
 #include <stdio.h>
 
-typedef struct{
-    char estado[30]
+typedef struct {
+    char estado[30];
     int codigo;
-    char nome[30]
+    char nome[30];
     int populacao;
     float area;
     float pib;
-    int pontosturisticos;
+    int pontosTuristicos;
 } CartaCidade;
 
-int main() {
+   int main() {
     CartaCidade carta1 = {
-        "Rio de Janeiro",      
-        1,                    
-        "Rio de Janeiro",    
-        6748000,               
-        1182.3,               
-        415.0,                
-        12       
+        "Rio de Janeiro",      // Estado
+        1,                    // Código
+        "Rio de Janeiro",     // Nome
+        6748000,               // População
+        1182.3,               // Área (km²)
+        415.0,                // PIB (R$ bilhões)
+        12                    // Pontos turísticos (exemplo)
     };
-    
 
-     CartaCidade carta2 = {
+    CartaCidade carta2 = {
         "São Paulo",
         2,
         "São Paulo",
@@ -31,3 +30,86 @@ int main() {
         799.0,
         18
     };
+
+    // Exibição das cartas
+    printf("\n--- Carta 1 ---\n");
+    printf("Estado: %s\n", carta1.estado);
+    printf("Código: %d\n", carta1.codigo);
+    printf("Cidade: %s\n", carta1.nome);
+    printf("População: %d\n", carta1.populacao);
+    printf("Área: %.2f km²\n", carta1.area);
+    printf("PIB: R$ %.2f bilhões\n", carta1.pib);
+    printf("Pontos turísticos: %d\n", carta1.pontosTuristicos);
+
+    printf("\n--- Carta 2 ---\n");
+    printf("Estado: %s\n", carta2.estado);
+    printf("Código: %d\n", carta2.codigo);
+    printf("Cidade: %s\n", carta2.nome);
+    printf("População: %d\n", carta2.populacao);
+    printf("Área: %.2f km²\n", carta2.area);
+    printf("PIB: R$ %.2f bilhões\n", carta2.pib);
+    printf("Pontos turísticos: %d\n", carta2.pontosTuristicos);
+
+    // Escolha do atributo
+    int opcao;
+    printf("\nEscolha um atributo para comparar:\n");
+    printf("1 - População\n");
+    printf("2 - Área\n");
+    printf("3 - PIB\n");
+    printf("4 - Pontos Turísticos\n");
+    printf("5 - Densidade Populacional (menor vence)\n");
+    printf("Opção: ");
+    scanf("%d", &opcao);
+
+    printf("\n🔍 Resultado da comparação:\n");
+
+    if (opcao == 1) {
+        if (carta1.populacao > carta2.populacao) {
+            printf("Carta 1 (%s) venceu!\n", carta1.nome);
+        } else if (carta1.populacao < carta2.populacao) {
+            printf("Carta 2 (%s) venceu!\n", carta2.nome);
+        } else {
+            printf("Empate!\n");
+        }
+    } else if (opcao == 2) {
+        if (carta1.area > carta2.area) {
+            printf("Carta 1 (%s) venceu!\n", carta1.nome);
+        } else if (carta1.area < carta2.area) {
+            printf("Carta 2 (%s) venceu!\n", carta2.nome);
+        } else {
+            printf("Empate!\n");
+        }
+    } else if (opcao == 3) {
+        if (carta1.pib > carta2.pib) {
+            printf("Carta 1 (%s) venceu!\n", carta1.nome);
+        } else if (carta1.pib < carta2.pib) {
+            printf("Carta 2 (%s) venceu!\n", carta2.nome);
+        } else {
+            printf("Empate!\n");
+        }
+    } else if (opcao == 4) {
+        if (carta1.pontosTuristicos > carta2.pontosTuristicos) {
+            printf("Carta 1 (%s) venceu!\n", carta1.nome);
+        } else if (carta1.pontosTuristicos < carta2.pontosTuristicos) {
+            printf("Carta 2 (%s) venceu!\n", carta2.nome);
+        } else {
+            printf("Empate!\n");
+        }
+    } else if (opcao == 5) {
+        float dens1 = carta1.populacao / carta1.area;
+        float dens2 = carta2.populacao / carta2.area;
+        printf("Densidade da Carta 1: %.2f hab/km²\n", dens1);
+        printf("Densidade da Carta 2: %.2f hab/km²\n", dens2);
+        if (dens1 < dens2) {
+            printf("Carta 1 (%s) venceu (menor densidade)!\n", carta1.nome);
+        } else if (dens1 > dens2) {
+            printf("Carta 2 (%s) venceu (menor densidade)!\n", carta2.nome);
+        } else {
+            printf("Empate!\n");
+        }
+    } else {
+        printf("Opção inválida.\n");
+    }
+
+    return 0;
+}
