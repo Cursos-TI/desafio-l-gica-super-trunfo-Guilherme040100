@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+typedef struct{
+    char estado[30]
+    int codigo;
+    char nome[30]
+    int populacao;
+    float area;
+    float pib;
+    int pontosturisticos;
+} CartaCidade;
+
+int main() {
+    CartaCidade carta1 = {
+        "Rio de Janeiro",      
+        1,                    
+        "Rio de Janeiro",    
+        6748000,               
+        1182.3,               
+        415.0,                
+        12       
+    };
+    
+
+     CartaCidade carta2 = {
+        "São Paulo",
+        2,
+        "São Paulo",
+        12330000,
+        1521.0,
+        799.0,
+        18
+    };
